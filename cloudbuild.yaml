@@ -1,7 +1,7 @@
 steps:
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-  # Image name and tag format => REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG
+  # Image name and tag format => REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG ?
     args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/philsa-sandbox/sample-repo/hello-world:$SHORT_SHA', '.']
     id: Build
 
