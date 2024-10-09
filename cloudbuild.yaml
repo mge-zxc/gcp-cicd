@@ -21,9 +21,6 @@ steps:
       - 'asia-southeast1-docker.pkg.dev/philsa-sandbox/sample-repo/hello-world:$SHORT_SHA'
       - '--region'
       - 'asia-southeast1'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated'
     id: Deploy
 
 images:
