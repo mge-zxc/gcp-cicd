@@ -1,12 +1,13 @@
 steps:
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', '$REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/hello-world:$SHORT_SHA', '.']
+  # Image name and tag format => REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG
+    args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/hello-world:$SHORT_SHA', '.']
     id: Build
 
   # Step 2: Push the image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '$REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/hello-world:$SHORT_SHA']
+    args: ['push', 'asia-southeast1-docker.pkg.dev/philsa-sandbox/sample-repo/hello-world:$SHORT_SHA']
     id: Push
 
   # Step 3: Deploy to Cloud Run
@@ -17,18 +18,13 @@ steps:
       - 'deploy'
       - 'hello-world-service'
       - '--image'
-      - '$REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/hello-world:$SHORT_SHA'
+      - 'asia-southeast1-docker.pkg.dev/philsa-sandbox/sample-repo/hello-world:$SHORT_SHA'
       - '--region'
-      - 'us-central1'
+      - 'asia-southeast1'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
     id: Deploy
 
 images:
-  - '$REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/hello-world:$SHORT_SHA'
-
-substitutions:
-  REGION: "asia-southeast1"
-  _PROJECT_ID: "philsa-sandbox"
-  _REPO_NAME: "your-repo-name"
+  - 'asia-southeast1-docker.pkg.dev/philsa-sandbox/sample-repo/hello-world:$SHORT_SHA'
