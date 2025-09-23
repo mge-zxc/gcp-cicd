@@ -27,4 +27,5 @@ images:
   - 'asia-southeast1-docker.pkg.dev/dict-training-demo/demo-repo/hello-world:$SHORT_SHA'
 
 options:
-  logging: none
+  logging: CLOUD_LOGGING_ONLY
+
