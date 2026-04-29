@@ -4,9 +4,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
-    res.send(`<h1>Hello World!</h1>
-            <img src="https://storage.googleapis.com/dict-training-bucket-day1/kitten.jpg" alt="Kitten" />
-        `);
+    res.send(`<h1>Hello World!</h1>`);
 });
 
 app.listen(port, () => {
