@@ -2,12 +2,12 @@ steps:
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
   # Image name and tag format => REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG
-    args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/dswd-training-sandbox/test:$SHORT_SHA', '.']
+    args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/dswd-training-sandbox/test/sample-app-image:$SHORT_SHA', '.']
     id: Build
 
   # Step 2: Push the image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-southeast1-docker.pkg.dev/dswd-training-sandbox/test:$SHORT_SHA']
+    args: ['push', 'asia-southeast1-docker.pkg.dev/dswd-training-sandbox/test/sample-app-image:$SHORT_SHA']
     id: Push
 
   # Step 3: Deploy to Cloud Run
